@@ -1,0 +1,10 @@
+snack: str = "popcorn"
+
+
+def choose_snack() -> None:
+    snack: str = "pizza"
+    print(snack)
+
+
+choose_snack()
+print(snack)
