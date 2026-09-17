@@ -10,7 +10,8 @@ RACING_COLOR: str = "#000080"
 
 def control(sensors: RobotSensors) -> RobotCommand:
     """Control car with minimally viable self-driving controller."""
-    throttle: float = 0.20
+
+    throttle: float = 0.15
     steer: float = 0.0
 
     if sensors.wall_lidar.front_left_m < 4.0:

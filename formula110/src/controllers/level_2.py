@@ -1,17 +1,17 @@
-"""Self-driving robotic race car controller level 1."""
+"""Self-driving robotic race car controller level 2."""
 
 from racing import RobotCommand, RobotSensors
 
 __author__: str = "731001286"
 
-RACING_NAME: str = "Level 1"
+RACING_NAME: str = "Level 2"
 RACING_COLOR: str = "#000080"
 
 
 def control(sensors: RobotSensors) -> RobotCommand:
-    """Control car at a max speed."""
+    """Control cars throttle based by speed"""
 
-    throttle: float = 0.0
+    throttle: float = (15.0 - sensors.odometry.speed_mps) / 15.0
     steer: float = 0.0
 
     if sensors.wall_lidar.front_left_m < 6.0:
@@ -20,10 +20,5 @@ def control(sensors: RobotSensors) -> RobotCommand:
         steer = -1.0
     else:
         steer = 0.0
-
-    if sensors.odometry.speed_mps < 10.0:
-        throttle = 0.30
-    else:
-        throttle = 0.15
 
     return RobotCommand(throttle=throttle, steer=steer)
